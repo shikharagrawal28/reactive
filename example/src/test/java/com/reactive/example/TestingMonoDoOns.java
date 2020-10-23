@@ -1,14 +1,14 @@
 package com.reactive.example;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import reactor.core.publisher.Mono;
 
 import static reactor.core.publisher.Mono.fromSupplier;
 
-class TestingMonoDoOns {
+public class TestingMonoDoOns {
 
     @Test
-    void MonoDoOnsOnException() {
+    public void MonoDoOnsOnException() {
         fromSupplier(this::induceException)
                 .doOnSubscribe(y -> System.out.println("doOnSubscribe 1"))
                 .doOnNext(y -> System.out.println("doOnNext 1"))
@@ -23,7 +23,7 @@ class TestingMonoDoOns {
     }
 
     @Test
-    void MonoDoOns() {
+    public void MonoDoOns() {
         fromSupplier(() -> "data")
                 .doOnSubscribe(y -> System.out.println("doOnSubscribe 1" + y))
                 .doOnNext(y -> System.out.println("doOnNext 1" + y))
@@ -38,7 +38,7 @@ class TestingMonoDoOns {
     }
 
     @Test
-    void MonoDoOnsWithEmpty() {
+    public void MonoDoOnsWithEmpty() {
         fromSupplier(() -> "data")
                 .doOnSubscribe(y -> System.out.println("doOnSubscribe 1" + y))
                 .doOnNext(y -> System.out.println("doOnNext 1" + y))
@@ -56,5 +56,4 @@ class TestingMonoDoOns {
         int i = 9 / 0;
         return "";
     }
-
 }
